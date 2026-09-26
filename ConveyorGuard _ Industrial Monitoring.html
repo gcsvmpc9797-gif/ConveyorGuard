@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047)file:///c%3A/Users/Manaswini/Conveyorguard.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ConveyorGuard | Industrial Monitoring</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #0d1117;
+    color: #e8edf2;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* ================= HEADER ================= */
+
+.header {
+    height: 76px;
+    padding: 15px 28px;
+    background: #151b23;
+    border-bottom: 1px solid #303943;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.logo-box {
+    width: 38px;
+    height: 38px;
+
+    border: 2px solid #28c7a7;
+    border-radius: 7px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #28c7a7;
+    font-weight: 800;
+    font-size: 13px;
+}
+
+.brand h1 {
+    margin: 0;
+    font-size: 21px;
+    letter-spacing: 1px;
+}
+
+.brand span {
+    display: block;
+    color: #82909e;
+    font-size: 11px;
+    margin-top: 3px;
+}
+
+.demo {
+    font-size: 10px;
+    color: #d69b3c;
+
+    border: 1px solid #705529;
+    background: #211b12;
+
+    padding: 6px 10px;
+    border-radius: 5px;
+
+    letter-spacing: 0.7px;
+}
+
+/* ================= MAIN ================= */
+
+.dashboard {
+    padding: 20px 28px 25px;
+}
+
+/* ================= TOP STATUS ================= */
+
+.top-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.8fr 0.8fr 1fr;
+    gap: 14px;
+}
+
+.panel {
+    background: #151b23;
+    border: 1px solid #303943;
+    border-radius: 8px;
+}
+
+.status-card {
+    height: 108px;
+    padding: 17px 19px;
+}
+
+.label {
+    color: #788692;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.big-number {
+    margin-top: 7px;
+    font-size: 31px;
+    font-weight: 700;
+}
+
+.green {
+    color: #28c7a7;
+}
+
+.amber {
+    color: #e2a13b;
+}
+
+.white {
+    color: #f1f4f6;
+}
+
+.sub {
+    color: #75828e;
+    font-size: 10px;
+    margin-top: 3px;
+}
+
+/* ================= CONTENT GRID ================= */
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 14px;
+    margin-top: 14px;
+}
+
+.panel-header {
+    height: 43px;
+
+    padding: 0 17px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid #2b343d;
+}
+
+.panel-title {
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: #a9b4bd;
+    text-transform: uppercase;
+}
+
+.live {
+    font-size: 9px;
+    color: #28c7a7;
+}
+
+.live::before {
+    content: "";
+    display: inline-block;
+
+    width: 6px;
+    height: 6px;
+
+    margin-right: 5px;
+
+    background: #28c7a7;
+    border-radius: 50%;
+}
+
+/* ================= SENSOR PANEL ================= */
+
+.sensor-body {
+    padding: 13px 17px 17px;
+}
+
+.sensor-row {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 70px;
+
+    align-items: center;
+
+    height: 45px;
+
+    border-bottom: 1px solid #252d35;
+}
+
+.sensor-row:last-child {
+    border-bottom: none;
+}
+
+.sensor-name {
+    font-size: 12px;
+    color: #dbe1e6;
+}
+
+.sensor-value {
+    font-size: 14px;
+    font-weight: 600;
+    text-align: right;
+}
+
+.unit {
+    font-size: 9px;
+    color: #71808c;
+    margin-left: 3px;
+}
+
+.sensor-state {
+    text-align: right;
+    font-size: 9px;
+    color: #28c7a7;
+}
+
+/* ================= TREND GRAPH ================= */
+
+.chart-panel {
+    min-height: 290px;
+}
+
+.chart-area {
+    height: 235px;
+    padding: 18px 18px 15px;
+    position: relative;
+}
+
+.chart-grid {
+    position: absolute;
+
+    left: 20px;
+    right: 20px;
+    top: 20px;
+    bottom: 30px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent 24%,
+            #252d35 25%,
+            transparent 26%,
+            transparent 49%,
+            #252d35 50%,
+            transparent 51%,
+            transparent 74%,
+            #252d35 75%,
+            transparent 76%
+        );
+}
+
+svg {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+.chart-footer {
+    position: absolute;
+
+    bottom: 9px;
+    left: 20px;
+
+    color: #687783;
+    font-size: 9px;
+}
+
+/* ================= CONVEYOR ================= */
+
+.conveyor-panel {
+    margin-top: 14px;
+}
+
+.conveyor-area {
+    height: 270px;
+    position: relative;
+    overflow: hidden;
+    padding: 20px;
+}
+
+/* BELT SUPPORT */
+
+.support {
+    position: absolute;
+
+    left: 7%;
+    right: 6%;
+    bottom: 42px;
+
+    height: 8px;
+
+    background: #39434d;
+}
+
+/* BELT */
+
+.belt-top {
+    position: absolute;
+
+    left: 8%;
+    right: 7%;
+    top: 105px;
+
+    height: 42px;
+
+    background: #2a3036;
+
+    border: 1px solid #66717b;
+
+    border-radius: 5px;
+
+    box-shadow:
+        inset 0 5px 0 rgba(255,255,255,0.025),
+        inset 0 -5px 0 rgba(0,0,0,0.25);
+}
+
+/* BELT TEXTURE */
+
+.belt-top::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    opacity: 0.18;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            transparent 0px,
+            transparent 28px,
+            #8a939a 29px,
+            transparent 30px
+        );
+}
+
+/* ROLLERS */
+
+.roller {
+    position: absolute;
+
+    top: 143px;
+
+    width: 50px;
+    height: 50px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #68747e 0 18%,
+            #303940 19% 55%,
+            #171c21 56% 100%
+        );
+
+    border: 2px solid #78838d;
+}
+
+.r1 {
+    left: 9%;
+}
+
+.r2 {
+    left: 31%;
+}
+
+.r3 {
+    left: 53%;
+}
+
+.r4 {
+    left: 75%;
+}
+
+/* JOINT */
+
+.joint {
+    position: absolute;
+
+    left: 54%;
+
+    top: 102px;
+
+    width: 7px;
+    height: 48px;
+
+    background: #e0a33e;
+
+    box-shadow:
+        0 0 12px rgba(224,163,62,0.45);
+}
+
+/* JOINT LABEL */
+
+.joint-label {
+    position: absolute;
+
+    left: 50.2%;
+    top: 68px;
+
+    color: #e0a33e;
+
+    font-size: 9px;
+    letter-spacing: 0.6px;
+
+    white-space: nowrap;
+}
+
+/* SENSOR POD */
+
+.sensor-pod {
+    position: absolute;
+
+    left: 50.3%;
+    top: 16px;
+
+    width: 105px;
+    height: 40px;
+
+    background: #17241f;
+
+    border: 1px solid #28c7a7;
+
+    border-radius: 6px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #28c7a7;
+
+    font-size: 9px;
+    font-weight: 700;
+}
+
+/* SENSOR LINE */
+
+.sensor-line {
+    position: absolute;
+
+    left: 55.4%;
+    top: 56px;
+
+    height: 47px;
+
+    border-left: 1px dashed #28c7a7;
+}
+
+/* MOTOR */
+
+.motor {
+    position: absolute;
+
+    left: 1.5%;
+    top: 92px;
+
+    width: 72px;
+    height: 68px;
+
+    background: #1d252d;
+
+    border: 1px solid #56636e;
+
+    border-radius: 7px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 9px;
+    color: #b8c1c8;
+}
+
+/* MOTOR SHAFT */
+
+.shaft {
+    position: absolute;
+
+    left: 5.4%;
+    top: 119px;
+
+    width: 45px;
+    height: 5px;
+
+    background: #69757f;
+}
+
+/* CURRENT SENSOR */
+
+.current {
+    position: absolute;
+
+    left: 2.2%;
+    top: 173px;
+
+    font-size: 8px;
+
+    color: #83919c;
+}
+
+/* CONVEYOR LABEL */
+
+.belt-label {
+    position: absolute;
+
+    left: 42%;
+    top: 166px;
+
+    font-size: 9px;
+
+    color: #788692;
+}
+
+/* ================= LOWER GRID ================= */
+
+.lower-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 14px;
+
+    margin-top: 14px;
+}
+
+/* ================= ANALYTICS ================= */
+
+.analytics {
+    padding-bottom: 17px;
+}
+
+.analytics-body {
+    padding: 17px;
+
+    display: grid;
+
+    grid-template-columns: 150px 1fr;
+
+    gap: 20px;
+
+    align-items: center;
+}
+
+/* GAUGE */
+
+.gauge {
+    width: 130px;
+    height: 130px;
+
+    border-radius: 50%;
+
+    background:
+        conic-gradient(
+            #28c7a7 0deg 245deg,
+            #2b333b 245deg 360deg
+        );
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+}
+
+.gauge::after {
+    content: "";
+
+    position: absolute;
+
+    width: 100px;
+    height: 100px;
+
+    background: #151b23;
+
+    border-radius: 50%;
+}
+
+.gauge-text {
+    position: relative;
+    z-index: 2;
+
+    text-align: center;
+}
+
+.gauge-text strong {
+    display: block;
+
+    font-size: 27px;
+}
+
+.gauge-text span {
+    color: #788692;
+
+    font-size: 8px;
+
+    letter-spacing: 1px;
+}
+
+/* ANALYTICS VALUES */
+
+.metric {
+    margin-bottom: 13px;
+}
+
+.metric:last-child {
+    margin-bottom: 0;
+}
+
+.metric-top {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 5px;
+
+    font-size: 10px;
+
+    color: #87939e;
+}
+
+.progress {
+    height: 5px;
+
+    background: #293139;
+
+    border-radius: 5px;
+
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+
+    background: #28c7a7;
+
+    border-radius: 5px;
+}
+
+/* ================= ALERT ================= */
+
+.alert-panel {
+    padding-bottom: 15px;
+}
+
+.alert-body {
+    padding: 17px;
+}
+
+.alert-main {
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 13px;
+
+    background: #151f25;
+
+    border: 1px solid #334049;
+
+    border-radius: 6px;
+}
+
+.alert-icon {
+    width: 34px;
+    height: 34px;
+
+    border-radius: 50%;
+
+    background: #17362f;
+
+    color: #28c7a7;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-weight: bold;
+}
+
+.alert-text strong {
+    display: block;
+
+    font-size: 12px;
+
+    color: #dfe6eb;
+}
+
+.alert-text span {
+    display: block;
+
+    margin-top: 4px;
+
+    font-size: 9px;
+
+    color: #788692;
+}
+
+/* ================= FOOTER ================= */
+
+.footer {
+    margin-top: 13px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    color: #56636e;
+
+    font-size: 8px;
+
+    letter-spacing: 0.4px;
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width: 1000px) {
+
+    .top-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .content-grid,
+    .lower-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header class="header">
+
+    <div class="brand">
+
+        <div class="logo-box">
+            CG
+        </div>
+
+        <div>
+
+            <h1>CONVEYORGUARD</h1>
+
+            <span>
+                INTELLIGENT CONVEYOR JOINT MONITORING
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="demo">
+        DEMO MODE · SIMULATED DATA
+    </div>
+
+</header>
+
+
+
+<main class="dashboard">
+
+
+<!-- ================= TOP STATUS ================= -->
+
+<section class="top-grid">
+
+
+    <div class="panel status-card">
+
+        <div class="label">
+            Joint Health Index
+        </div>
+
+        <div class="big-number green">
+            87
+            <span style="font-size:17px;color:#687783;">
+                / 100
+            </span>
+        </div>
+
+        <div class="sub">
+            Current condition
+        </div>
+
+    </div>
+
+
+
+    <div class="panel status-card">
+
+        <div class="label">
+            Risk Level
+        </div>
+
+        <div class="big-number green" style="font-size:25px;">
+            LOW
+        </div>
+
+        <div class="sub">
+            Within baseline
+        </div>
+
+    </div>
+
+
+
+    <div class="panel status-card">
+
+        <div class="label">
+            Monitoring
+        </div>
+
+        <div class="big-number white" style="font-size:21px;margin-top:11px;">
+
+            <span class="green">●</span>
+            ONLINE
+
+        </div>
+
+        <div class="sub">
+            Edge node connected
+        </div>
+
+    </div>
+
+
+
+    <div class="panel status-card">
+
+        <div class="label">
+            Conveyor
+        </div>
+
+        <div class="big-number white" style="font-size:21px;margin-top:11px;">
+
+            CVG-01
+
+        </div>
+
+        <div class="sub">
+            Joint J-04 · Monitoring
+        </div>
+
+    </div>
+
+
+</section>
+
+
+
+<!-- ================= SENSOR + GRAPH ================= -->
+
+<section class="content-grid">
+
+
+    <!-- SENSOR PANEL -->
+
+    <div class="panel">
+
+        <div class="panel-header">
+
+            <div class="panel-title">
+                Sensor Telemetry
+            </div>
+
+            <div class="live">
+                LIVE
+            </div>
+
+        </div>
+
+
+        <div class="sensor-body">
+
+
+            <div class="sensor-row">
+
+                <div class="sensor-name">
+                    Vibration
+                </div>
+
+                <div class="sensor-value">
+                    2.84
+                    <span class="unit">mm/s</span>
+                </div>
+
+                <div class="sensor-state">
+                    NORMAL
+                </div>
+
+            </div>
+
+
+
+            <div class="sensor-row">
+
+                <div class="sensor-name">
+                    Acoustic
+                </div>
+
+                <div class="sensor-value">
+                    61.8
+                    <span class="unit">dB</span>
+                </div>
+
+                <div class="sensor-state">
+                    NORMAL
+                </div>
+
+            </div>
+
+
+
+            <div class="sensor-row">
+
+                <div class="sensor-name">
+                    Temperature
+                </div>
+
+                <div class="sensor-value">
+                    42.6
+                    <span class="unit">°C</span>
+                </div>
+
+                <div class="sensor-state">
+                    NORMAL
+                </div>
+
+            </div>
+
+
+
+            <div class="sensor-row">
+
+                <div class="sensor-name">
+                    Motor Load
+                </div>
+
+                <div class="sensor-value">
+                    68
+                    <span class="unit">%</span>
+                </div>
+
+                <div class="sensor-state">
+                    NORMAL
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- TREND -->
+
+    <div class="panel chart-panel">
+
+        <div class="panel-header">
+
+            <div class="panel-title">
+                Joint Health Trend
+            </div>
+
+            <div class="live">
+                8 CYCLES
+            </div>
+
+        </div>
+
+
+        <div class="chart-area">
+
+            <div class="chart-grid"></div>
+
+
+            <svg viewBox="0 0 800 210" preserveAspectRatio="none">
+
+
+                <polyline points="
+                    20,45
+                    125,49
+                    230,54
+                    335,61
+                    440,67
+                    545,75
+                    650,83
+                    770,92
+                    " fill="none" stroke="#28c7a7" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></polyline>
+
+
+                <circle cx="20" cy="45" r="5" fill="#28c7a7"></circle>
+
+                <circle cx="125" cy="49" r="5" fill="#28c7a7"></circle>
+
+                <circle cx="230" cy="54" r="5" fill="#28c7a7"></circle>
+
+                <circle cx="335" cy="61" r="5" fill="#28c7a7"></circle>
+
+                <circle cx="440" cy="67" r="5" fill="#28c7a7"></circle>
+
+                <circle cx="545" cy="75" r="5" fill="#28c7a7"></circle>
+
+                <circle cx="650" cy="83" r="5" fill="#28c7a7"></circle>
+
+                <circle cx="770" cy="92" r="6" fill="#e2a13b"></circle>
+
+            </svg>
+
+
+            <div class="chart-footer">
+
+                HEALTH INDEX · 92 → 87
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</section>
+
+
+
+<!-- ================= CONVEYOR ================= -->
+
+<section class="panel conveyor-panel">
+
+
+    <div class="panel-header">
+
+        <div class="panel-title">
+            Conveyor Overview
+        </div>
+
+        <div class="live">
+            JOINT J-04
+        </div>
+
+    </div>
+
+
+    <div class="conveyor-area">
+
+
+        <!-- MOTOR -->
+
+        <div class="motor">
+            MOTOR
+        </div>
+
+
+        <div class="shaft"></div>
+
+
+        <!-- BELT -->
+
+        <div class="belt-top"></div>
+
+
+        <!-- ROLLERS -->
+
+        <div class="roller r1"></div>
+
+        <div class="roller r2"></div>
+
+        <div class="roller r3"></div>
+
+        <div class="roller r4"></div>
+
+
+        <!-- JOINT -->
+
+        <div class="joint"></div>
+
+
+        <!-- POD -->
+
+        <div class="sensor-pod">
+
+            CONVEYORGUARD
+            <br>
+            SENSOR POD
+
+        </div>
+
+
+        <div class="sensor-line"></div>
+
+
+        <!-- LABELS -->
+
+        <div class="joint-label">
+            BELT JOINT / SPLICE
+        </div>
+
+
+        <div class="belt-label">
+            CONVEYOR BELT
+        </div>
+
+
+        <div class="current">
+            CURRENT / LOAD SENSOR
+        </div>
+
+
+        <div class="support"></div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= ANALYTICS + ALERT ================= -->
+
+<section class="lower-grid">
+
+
+    <!-- ANALYTICS -->
+
+    <div class="panel analytics">
+
+        <div class="panel-header">
+
+            <div class="panel-title">
+                Condition Analytics
+            </div>
+
+            <div class="live">
+                EDGE
+            </div>
+
+        </div>
+
+
+        <div class="analytics-body">
+
+
+            <div class="gauge">
+
+                <div class="gauge-text">
+
+                    <strong>
+                        13%
+                    </strong>
+
+                    <span>
+                        DEVIATION
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <div>
+
+
+                <div class="metric">
+
+                    <div class="metric-top">
+
+                        <span>
+                            Vibration
+                        </span>
+
+                        <span>
+                            28%
+                        </span>
+
+                    </div>
+
+                    <div class="progress">
+
+                        <div class="progress-fill" style="width:28%">
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="metric">
+
+                    <div class="metric-top">
+
+                        <span>
+                            Acoustic
+                        </span>
+
+                        <span>
+                            34%
+                        </span>
+
+                    </div>
+
+                    <div class="progress">
+
+                        <div class="progress-fill" style="width:34%">
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="metric">
+
+                    <div class="metric-top">
+
+                        <span>
+                            Thermal
+                        </span>
+
+                        <span>
+                            21%
+                        </span>
+
+                    </div>
+
+                    <div class="progress">
+
+                        <div class="progress-fill" style="width:21%">
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="metric">
+
+                    <div class="metric-top">
+
+                        <span>
+                            Load
+                        </span>
+
+                        <span>
+                            39%
+                        </span>
+
+                    </div>
+
+                    <div class="progress">
+
+                        <div class="progress-fill" style="width:39%">
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ALERT -->
+
+    <div class="panel alert-panel">
+
+
+        <div class="panel-header">
+
+            <div class="panel-title">
+                Maintenance Status
+            </div>
+
+            <div class="live">
+                STATUS
+            </div>
+
+        </div>
+
+
+        <div class="alert-body">
+
+
+            <div class="alert-main">
+
+
+                <div class="alert-icon">
+                    ✓
+                </div>
+
+
+                <div class="alert-text">
+
+                    <strong>
+                        NO ACTIVE WARNING
+                    </strong>
+
+                    <span>
+                        Joint behaviour remains within learned baseline.
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+            <div style="
+                margin-top:15px;
+                display:grid;
+                grid-template-columns:1fr 1fr;
+                gap:10px;
+                ">
+
+
+                <div style="
+                    background:#151b23;
+                    border:1px solid #303943;
+                    padding:13px;
+                    border-radius:6px;
+                    ">
+
+                    <div class="label">
+                        Last Inspection
+                    </div>
+
+                    <div style="
+                        margin-top:6px;
+                        font-size:13px;
+                        ">
+
+                        NORMAL
+
+                    </div>
+
+                </div>
+
+
+
+                <div style="
+                    background:#151b23;
+                    border:1px solid #303943;
+                    padding:13px;
+                    border-radius:6px;
+                    ">
+
+                    <div class="label">
+                        Next Action
+                    </div>
+
+                    <div style="
+                        margin-top:6px;
+                        font-size:13px;
+                        color:#28c7a7;
+                        ">
+
+                        MONITOR
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+</section>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<div class="footer">
+
+    <span>
+        CONVEYORGUARD · INDUSTRIAL CONDITION MONITORING
+    </span>
+
+    <span>
+        CONCEPTUAL INTERFACE · SIMULATED SENSOR DATA
+    </span>
+
+</div>
+
+
+</main>
+
+
+</body></html>
